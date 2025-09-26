@@ -9,19 +9,19 @@
 This repository stores the code examples of the Drawer component for the [Getting Started with Drawer](https://js.devexpress.com/Documentation/Guide/UI_Components/Drawer/Getting_Started_with_Navigation_Drawer/) tutorial. This tutorial creates a Drawer that allows a user to switch between pages. Users can click a button on the toolbar to open and close the Drawer.
 
 
-<div align="center"><img src="./drawer.gif" /></div>
+<div align="center"><img src="images/drawer.gif" /></div>
 
 ## Files to Review
 
 - **Angular**
-    - [app.component.html](angular/src/app/app.component.html)
-    - [app.component.ts](angular/src/app/app.component.ts)
+    - [app.component.html](Angular/src/app/app.component.html)
+    - [app.component.ts](Angular/src/app/app.component.ts)
 - **jQuery**
-    - [index.js](jquery/src/index.js)
+    - [index.js](jQuery/src/index.js)
 - **React**
-    - [App.js](react/src/App.js)
+    - [App.js](React/src/App.js)
 - **Vue**
-    - [App.vue](vue/src/App.vue)
+    - [App.vue](Vue/src/App.vue)
 - **ASP.NET MVC**    
     - [Index.cshtml](aspnetmvc/GettingStartedWithDrawer/Views/Home/Index.cshtml)
 
