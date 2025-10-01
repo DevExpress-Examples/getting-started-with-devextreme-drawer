@@ -1,29 +1,135 @@
+@model ASP_NET_Core.Models.Employee
 @using ASP_NET_Core.Models
 
-<h2>Home</h2>
+@{
+    ViewData["Title"] = "Employee Information Form";
+}
 
-@(Html.DevExtreme().DataGrid<SampleOrder>()
-    .ShowBorders(true)
-    .DataSource(d => d.Mvc().Controller("SampleData").LoadAction("Get").Key("OrderID"))
-    .Columns(columns => {
-        columns.AddFor(m => m.OrderID);
-        columns.AddFor(m => m.OrderDate);
-        columns.AddFor(m => m.CustomerName);
-        columns.AddFor(m => m.ShipCountry);
-        columns.AddFor(m => m.ShipCity);
-    })
-    .Paging(p => p.PageSize(10))
-    .FilterRow(f => f.Visible(true))
-    .HeaderFilter(f => f.Visible(true))
-    .GroupPanel(p => p.Visible(true))
-    .Grouping(g => g.AutoExpandAll(false))
-    .RemoteOperations(true)
-    .Summary(s => s
-        .TotalItems(totalItems => {
-            totalItems.AddFor(m => m.ShipCity).SummaryType(SummaryType.Count);
-        })
-        .GroupItems(groupItems => {
-            groupItems.Add().SummaryType(SummaryType.Count);
-        })
-    )
-)
+<div id="app-container">
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["Message"]
+        </div>
+    }
+
+    <form method="post" id="employee-form">
+        @(Html.DevExtreme().Form<Employee>()
+            .ID("employee-form-dx")
+            .FormData(Model)
+            .LabelLocation(FormLabelLocation.Top)
+            .ShowColonAfterLabel(false)
+            .Items(items => {
+                items.AddGroup()
+                    .Caption("Personal Information")
+                    .ColCount(2)
+                    .Items(groupItems => {
+                        groupItems.AddSimpleFor(m => m.Name)
+                            .IsRequired(true)
+                            .ValidationRules(rules => {
+                                rules.AddRequired().Message("Name is required");
+                            });
+                        groupItems.AddSimpleFor(m => m.Position);
+                        groupItems.AddSimpleFor(m => m.HireDate)
+                            .Editor(e => e.DateBox()
+                                .DisplayFormat("yyyy/MM/dd")
+                            );
+                        groupItems.AddSimpleFor(m => m.OfficeNumber)
+                            .IsRequired(true)
+                            .ValidationRules(rules => {
+                                rules.AddNumeric().Message("Office number must be a number");
+                            });
+                    });
+
+                items.AddGroup()
+                    .Caption("Contact Information")
+                    .ColCount(2)
+                    .Items(groupItems => {
+                        groupItems.AddSimpleFor(m => m.Phone);
+                        groupItems.AddSimpleFor(m => m.Skype);
+                        groupItems.AddSimpleFor(m => m.Email)
+                            .ColSpan(2)
+                            .ValidationRules(rules => {
+                                rules.AddEmail().Message("Email is invalid");
+                            });
+                    });
+
+                items.AddGroup()
+                    .Caption("Additional Information")
+                    .Items(groupItems => {
+                        groupItems.AddSimpleFor(m => m.Notes)
+                            .Editor(e => e.TextArea()
+                                .Height(100)
+                            );
+                    });
+
+                items.AddButton()
+                    .ButtonOptions(b => b
+                        .Text("Submit")
+                        .Type(ButtonType.Success)
+                        .UseSubmitBehavior(true)
+                    );
+            })
+        )
+    </form>
+
+    <div id="check-box" style="margin-top: 15px;">
+        @(Html.DevExtreme().CheckBox()
+            .ID("readonly-checkbox")
+            .Text("Make form read-only")
+            .Value(false)
+            .OnValueChanged("onReadOnlyChanged")
+        )
+    </div>
+</div>
+
+<script type="text/javascript">
+    function onReadOnlyChanged(e) {
+        const form = $("#employee-form-dx").dxForm("instance");
+        form.option("readOnly", e.value);
+
+        const message = e.value ? "Form is now read-only" : "Form is now editable";
+        DevExpress.ui.notify(message, "info", 1500);
+    }
+
+    $(document).ready(function() {
+        $("#employee-form").submit(function(e) {
+            const form = $("#employee-form-dx").dxForm("instance");
+            const validationResult = form.validate();
+
+            if (!validationResult.isValid) {
+                e.preventDefault();
+                DevExpress.ui.notify("Please fix validation errors", "error", 2000);
+                return false;
+            }
+
+            DevExpress.ui.notify("Processing form submission...", "success", 2000);
+        });
+    });
+</script>
+
+<style>
+    #app-container {
+        width: 900px;
+        position: relative;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .drawer-view-content {
+        padding: 20px;
+    }
+
+    .alert {
+        padding: 15px;
+        margin-bottom: 20px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+    }
+
+    .alert-success {
+        color: #3c763d;
+        background-color: #dff0d8;
+        border-color: #d6e9c6;
+    }
+</style>

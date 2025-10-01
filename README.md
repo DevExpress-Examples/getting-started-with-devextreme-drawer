@@ -19,11 +19,13 @@ This repository stores the code examples of the Drawer component for the [Gettin
 - **jQuery**
     - [index.js](jQuery/src/index.js)
 - **React**
-    - [App.js](React/src/App.js)
+    - [App.tsx](React/src/App.tsx)
 - **Vue**
     - [App.vue](Vue/src/App.vue)
-- **ASP.NET MVC**    
-    - [Index.cshtml](aspnetmvc/GettingStartedWithDrawer/Views/Home/Index.cshtml)
+    - [FormContent.vue](Vue/src/components/FormContent.vue)
+- **ASP.NET Core**    
+    - [Index.cshtml](ASP.NET%20Core/Views/Home/Index.cshtml)
+    - [_Layout.cshtml](ASP.NET%20Core/Views/Shared/_Layout.cshtml)
 
 ## Documentation
 

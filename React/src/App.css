@@ -1,4 +1,17 @@
-.main {
-  margin: 50px;
-  width: 90vw;
+#app-container {
+  width: 900px;
+  position: relative;
+  margin: 50px auto;
+}
+
+#form-container {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+#check-box {
+  margin-top: 15px;
+  padding: 10px 0;
 }

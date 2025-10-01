@@ -1,4 +1,18 @@
-# ASP.NET Core DevExtreme Example
+# ASP.NET Core DevExtreme Form Example with Navigation Drawer
+
+This example demonstrates how to create a comprehensive form application using DevExtreme components with ASP.NET Core MVC and Razor syntax. The application includes:
+
+- **Employee Information Form** with server-side model binding and validation
+- **Navigation Drawer** pattern migrated from ASP.NET MVC Framework project
+- **Grouped form layout** with personal and contact information sections
+- **Form validation** with DevExtreme validators and ASP.NET Core model validation
+- **Interactive notifications** and form submission handling
+- **Read-only mode toggle** with client-side form manipulation
+- **Responsive design** with proper CSS styling
+- **Server-side form processing** with model validation and feedback
+- **Modern ASP.NET Core patterns** with strongly-typed models and views
+
+The implementation migrates the drawer navigation pattern from the ASP.NET MVC (.NET Framework) project while maintaining the same DevExtreme component syntax and functionality.
 
 For more information about this example check the [Readme](../README.md).
 

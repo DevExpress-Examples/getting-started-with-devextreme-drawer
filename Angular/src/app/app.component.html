@@ -1,3 +1,55 @@
-<div class="default-style">
-  <dx-button [text]="buttonText" (onClick)="onClick($event)"></dx-button>
+<div id="app-container">
+  <form id="form" (submit)="handleSubmit($event)">
+    <dx-form
+      [formData]="employee"
+      labelLocation="top"
+      [showColonAfterLabel]="false"
+      [readOnly]="isFormReadOnly"
+    >
+      <dxi-item itemType="group" caption="Personal Information" [colCount]="2">
+        <dxi-item dataField="name" [isRequired]="true">
+          <dxi-validation-rule
+            type="required"
+            message="Name is required"
+          ></dxi-validation-rule>
+        </dxi-item>
+        <dxi-item dataField="position"></dxi-item>
+        <dxi-item dataField="hireDate" editorType="dxDateBox"></dxi-item>
+        <dxi-item dataField="officeNumber" [isRequired]="true">
+          <dxi-validation-rule
+            type="numeric"
+            message="This field should contain a number"
+          ></dxi-validation-rule>
+        </dxi-item>
+      </dxi-item>
+
+      <dxi-item itemType="group" caption="Contact Information" [colCount]="2">
+        <dxi-item dataField="phone"></dxi-item>
+        <dxi-item dataField="skype"></dxi-item>
+        <dxi-item dataField="email" [colSpan]="2">
+          <dxi-validation-rule
+            type="email"
+            message="Email is invalid"
+          ></dxi-validation-rule>
+        </dxi-item>
+      </dxi-item>
+
+      <dxi-item itemType="group" caption="Additional Information">
+        <dxi-item dataField="notes" editorType="dxTextArea"></dxi-item>
+      </dxi-item>
+
+      <dxi-item
+        itemType="button"
+        [buttonOptions]="submitButtonOptions"
+      ></dxi-item>
+    </dx-form>
+  </form>
+
+  <div id="check-box">
+    <dx-check-box
+      text="Make form read-only"
+      [(value)]="isFormReadOnly"
+      (onValueChanged)="onReadOnlyChanged()"
+    ></dx-check-box>
+  </div>
 </div>
