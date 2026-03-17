@@ -10,8 +10,8 @@ import Form, {
   ButtonOptions,
 } from 'devextreme-react/form';
 import CheckBox from 'devextreme-react/check-box';
-// @ts-expect-error - Required for Form editorType="dxTextArea" to work properly
-import TextArea from 'devextreme-react/text-area';
+// Required for Form editorType="dxTextArea" to work properly
+import 'devextreme-react/text-area';
 import notify from 'devextreme/ui/notify';
 import type { CheckBoxTypes } from 'devextreme-react/check-box';
 import type { Employee } from './types';

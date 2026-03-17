@@ -6,42 +6,56 @@
       [showColonAfterLabel]="false"
       [readOnly]="isFormReadOnly"
     >
-      <dxi-item itemType="group" caption="Personal Information" [colCount]="2">
-        <dxi-item dataField="name" [isRequired]="true">
-          <dxi-validation-rule
+      <dxi-form-item
+        itemType="group"
+        caption="Personal Information"
+        [colCount]="2"
+      >
+        <dxi-form-item dataField="name" [isRequired]="true">
+          <dxi-form-validation-rule
             type="required"
             message="Name is required"
-          ></dxi-validation-rule>
-        </dxi-item>
-        <dxi-item dataField="position"></dxi-item>
-        <dxi-item dataField="hireDate" editorType="dxDateBox"></dxi-item>
-        <dxi-item dataField="officeNumber" [isRequired]="true">
-          <dxi-validation-rule
+          ></dxi-form-validation-rule>
+        </dxi-form-item>
+        <dxi-form-item dataField="position"></dxi-form-item>
+        <dxi-form-item
+          dataField="hireDate"
+          editorType="dxDateBox"
+        ></dxi-form-item>
+        <dxi-form-item dataField="officeNumber" [isRequired]="true">
+          <dxi-form-validation-rule
             type="numeric"
             message="This field should contain a number"
-          ></dxi-validation-rule>
-        </dxi-item>
-      </dxi-item>
+          ></dxi-form-validation-rule>
+        </dxi-form-item>
+      </dxi-form-item>
 
-      <dxi-item itemType="group" caption="Contact Information" [colCount]="2">
-        <dxi-item dataField="phone"></dxi-item>
-        <dxi-item dataField="skype"></dxi-item>
-        <dxi-item dataField="email" [colSpan]="2">
-          <dxi-validation-rule
+      <dxi-form-item
+        itemType="group"
+        caption="Contact Information"
+        [colCount]="2"
+      >
+        <dxi-form-item dataField="phone"></dxi-form-item>
+        <dxi-form-item dataField="skype"></dxi-form-item>
+        <dxi-form-item dataField="email" [colSpan]="2">
+          <dxi-form-validation-rule
             type="email"
             message="Email is invalid"
-          ></dxi-validation-rule>
-        </dxi-item>
-      </dxi-item>
+          ></dxi-form-validation-rule>
+        </dxi-form-item>
+      </dxi-form-item>
 
-      <dxi-item itemType="group" caption="Additional Information">
-        <dxi-item dataField="notes" editorType="dxTextArea"></dxi-item>
-      </dxi-item>
+      <dxi-form-item itemType="group" caption="Additional Information">
+        <dxi-form-item
+          dataField="notes"
+          editorType="dxTextArea"
+        ></dxi-form-item>
+      </dxi-form-item>
 
-      <dxi-item
+      <dxi-form-item
         itemType="button"
         [buttonOptions]="submitButtonOptions"
-      ></dxi-item>
+      ></dxi-form-item>
     </dx-form>
   </form>
 

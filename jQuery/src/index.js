@@ -94,7 +94,7 @@ $(() => {
       buttonOptions: {
         text: 'Submit',
         type: 'success',
-        onClick(e) {
+        onClick(_e) {
           const validationResult = form.validate();
           if (validationResult.isValid) {
             DevExpress.ui.notify('Form submitted successfully!', 'success', 2000);
