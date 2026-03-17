@@ -11,7 +11,6 @@ import Form, {
 } from 'devextreme-react/form';
 import CheckBox from 'devextreme-react/check-box';
 // @ts-expect-error - Required for Form editorType="dxTextArea" to work properly
-// eslint-disable-next-line no-unused-vars
 import TextArea from 'devextreme-react/text-area';
 import notify from 'devextreme/ui/notify';
 import type { CheckBoxTypes } from 'devextreme-react/check-box';
