@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import notify from 'devextreme/ui/notify';
 import { Employee, SubmitButtonOptions } from './app.types';
 
@@ -6,6 +6,7 @@ import { Employee, SubmitButtonOptions } from './app.types';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class AppComponent {
